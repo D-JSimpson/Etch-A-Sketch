@@ -1,10 +1,30 @@
 const container = document.getElementById('container');
 const clearButton = document.getElementById('clear');
-console.log(container.clientWidth);
 
+let marker = 'white';
 
+function markerChange(){
+    marker = document.getElementById('marker-dropdown').value;
+    console.log(marker);
+}
+
+let drawToggle = false;
+let percentMode = false;
+
+container.addEventListener('click', function(){drawToggle = true;});
+container.addEventListener('dblclick', function(){drawToggle = false;});
 
 makeGrid(16);
+
+function draw(div){
+    if(drawToggle === true){
+        if(marker == 'neon green'){div.style.backgroundColor = '#00FF80'}
+        else if(marker == 'hot pink'){div.style.backgroundColor = '#FF0080'}
+        else{
+            div.style.backgroundColor = marker;
+        }
+    }
+}
 
 function makeGrid(size){
     let divWidth = (container.clientWidth)/size;
@@ -16,7 +36,7 @@ for(let i = 0; i <= newSize - 1; i++){
     div.className = 'grid-square';
     div.style.cssText = "background-color: black; "
     container.appendChild(div);
-    div.addEventListener('mouseenter', function(){div.style.backgroundColor = 'white';});
+    div.addEventListener('mousemove', function(){draw(this)});
     }
 }
 
@@ -27,7 +47,7 @@ function clear(){
 
 clearButton.addEventListener('click', function(){
     clear();
-    let gridSize = window.prompt('What would you like th new grid size to be?');;
+    let gridSize = window.prompt('What would you like the new grid size to be?');;
     while(gridSize % 1 !== 0 || gridSize > 100){
     alert("Enter a NUMBER that is also less than or equal to 100");
     gridSize = window.prompt('What would you like th new grid size to be?');
