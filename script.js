@@ -2,10 +2,18 @@ const container = document.getElementById('container');
 const clearButton = document.getElementById('clear');
 
 let marker = 'white';
+let background = 'black';
 
 function markerChange(){
     marker = document.getElementById('marker-dropdown').value;
     console.log(marker);
+}
+
+function backgroundChange(){
+    background = document.getElementById('background-dropdown').value;
+    console.log(background);
+    let div = document.querySelectorAll('.grid-square');
+    div.forEach(function(currentValue, currentIndex, listObj){div[currentIndex].style.cssText = "background-color: " + background +";"});
 }
 
 let drawToggle = false;
@@ -34,7 +42,7 @@ function makeGrid(size){
 for(let i = 0; i <= newSize - 1; i++){
     const div = document.createElement('div');
     div.className = 'grid-square';
-    div.style.cssText = "background-color: black; "
+    div.style.cssText = "background-color: " + background +";"
     container.appendChild(div);
     div.addEventListener('mousemove', function(){draw(this)});
     }

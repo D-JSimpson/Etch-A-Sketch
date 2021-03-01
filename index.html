@@ -18,8 +18,9 @@
     <main>
 
         <button id = "clear">Clear</button>
-
+        <p>Marker</p>
         <select id = 'marker-dropdown' onchange='markerChange()'>
+            <option disabled>Select drawing color</option>
             <option value = "white">White</option>
             <option value = "black">Black</option>
             <option value = "red">Red</option>
@@ -34,6 +35,12 @@
             <option value = "purple">Purple</option>
             <option value = "magenta">Magenta</option>
             <option value = "hot pink">Hot Pink</option>
+        </select>
+        <p>Background <i>*Will delete what you have*</i></p>
+        <select id = 'background-dropdown' onchange='backgroundChange()'>
+            <option disabled>Select background color</option>
+            <option value = "black">Black</option>
+            <option value = "white">White</option>
         </select>
 
         <div id = 'container'>
