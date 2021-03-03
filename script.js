@@ -28,11 +28,8 @@ makeGrid(16);
 
 function draw(div){
     if(drawToggle === true && percentMode === false){
-        if(marker == 'neon green'){div.style.backgroundColor = '#00FF80';}
-        else if(marker == 'hot pink'){div.style.backgroundColor = '#FF0080';}
-        else{
             div.style.backgroundColor = marker;
-        }
+            console.log(div.style.backgroundColor);
     }
 }
 
@@ -42,8 +39,10 @@ function percentDraw(div){
     if(drawToggle === true && percentMode === true){
        
        let backcolor = div.style.backgroundColor;
-       if(backcolor === 'rgb(255, 255, 255)'){
-        div.style.backgroundColor = 'rgb(0,0,0, 0.1)';
+       if(backcolor === 'rgb(255, 255, 255)' || backcolor === 'rgb(0, 0, 0)'){
+        let parenthesis = marker.indexOf(')');
+        backcolor = marker.substring(0, parenthesis);
+        div.style.backgroundColor = backcolor + ', 0.1)';
        }
        else{
        let opacityloc = backcolor.indexOf('0.');
