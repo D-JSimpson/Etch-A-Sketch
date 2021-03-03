@@ -12,7 +12,7 @@
 
 <body id = 'body'>
 
-    <p class = "instructions">Click to enable drawing, double click to disable drawing. *In the square*</p>
+    <p class = "instructions">Click to isable drawing, double click to disable drawing. *In the square*</p>
     <p class = "instructions">When cleared you will be able to choose grid size</p>
 
     <main>
@@ -36,12 +36,16 @@
             <option value = "magenta">Magenta</option>
             <option value = "hot pink">Hot Pink</option>
         </select>
-        <p>Background <i>*Will delete what you have*</i></p>
+        <p>Background</p>
+        <p style = "margin-top: 0;"><i>*Will delete what you have*</i></p>
         <select id = 'background-dropdown' onchange='backgroundChange()'>
             <option disabled>Select background color</option>
-            <option value = "black">Black</option>
-            <option value = "white">White</option>
+            <option value = "rgb(0,0,0)">Black</option>
+            <option value = "rgb(255,255,255)">White</option>
         </select>
+
+        <button id = "percent-mode">Enable percent mode</button>
+        <button id = "percent-mode-off" style = "margin-bottom: 1%;">Disable percent mode</button>
 
         <div id = 'container'>
             
