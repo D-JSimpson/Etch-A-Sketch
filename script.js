@@ -8,12 +8,10 @@ let background = 'rgb(0,0,0)';
 
 function markerChange(){
     marker = document.getElementById('marker-dropdown').value;
-    console.log(marker);
 }
 
 function backgroundChange(){
     background = document.getElementById('background-dropdown').value;
-    console.log(background);
     let div = document.querySelectorAll('.grid-square');
     div.forEach(function(currentValue, currentIndex, listObj){div[currentIndex].style.cssText = "background-color: " + background +";"});
 }
@@ -52,32 +50,16 @@ function percentDraw(div){
        let parenthesis = backcolor.indexOf(')');
        let opacity = backcolor.substring(opacityloc, parenthesis);
        backcolor = backcolor.substring(0, opacityloc);
-       console.log(opacity);
-       console.log(backcolor);
        opacity = +opacity + 0.1;
        backcolor += (opacity + ')');
-       console.log(opacity);
-       console.log(backcolor);
        div.style.backgroundColor = backcolor;
        }
-
-        /*
-        let bc = div.style.backgroundColor = 'rgb(0, 0, 0, ' + p + ')';
-        let int = bc.indexOf('0.');
-        let int2 = bc.indexOf(')');
-        let part = bc.substring(int, int2);
-        console.log(bc);
-        console.log(int);
-        console.log(part);
-        p+= 0.1;
-        */
     }
 }
 
 function makeGrid(size){
     let divWidth = (container.clientWidth)/size;
     let newSize = size * size;
-    console.log(size);
     container.style.cssText = "grid-template-columns: repeat(" + size + ", " + divWidth + "px); grid-template-rows: repeat(" + size + ", " + divWidth + "px);"
 for(let i = 0; i <= newSize - 1; i++){
     const div = document.createElement('div');
