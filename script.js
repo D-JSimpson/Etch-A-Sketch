@@ -2,6 +2,7 @@ const container = document.getElementById('container');
 const clearButton = document.getElementById('clear');
 const percentButton = document.getElementById('percent-mode');
 const percentOffButton = document.getElementById('percent-mode-off');
+const randomButton = document.getElementById('random-mode')
 
 let marker = 'rgb(255,255,255)';
 let background = 'rgb(0,0,0)';
@@ -18,18 +19,19 @@ function backgroundChange(){
 
 let drawToggle = false;
 let percentMode = false;
-
+let randomMode = false;
+let randomModeCtr = 0;
 percentButton.addEventListener('click', function(){percentMode = true; percentButton.style.color = 'white'; percentOffButton.style.color = 'black'; percentButton.style.backgroundColor = 'green'; percentOffButton.style.backgroundColor = 'red';});
 percentOffButton.addEventListener('click', function(){percentMode = false; percentOffButton.style.color = 'black'; percentButton.style.color = 'black'; percentButton.style.backgroundColor = 'white'; percentOffButton.style.backgroundColor = 'white';});
 container.addEventListener('click', function(){drawToggle = true;});
 container.addEventListener('dblclick', function(){drawToggle = false;});
+randomButton.addEventListener('click', function(){randomModeCtr++; if(randomModeCtr % 2 == 1){randomButton.innerHTML = "Random Mode<br>On"; randomMode = true;} else{randomButton.innerHTML = "Random Mode<br>Off"; randomMode = false;} });
 
 makeGrid(16);
 
 function draw(div){
-    if(drawToggle === true && percentMode === false){
+    if(drawToggle === true && percentMode === false && randomMode === false){
             div.style.backgroundColor = marker;
-            console.log(div.style.backgroundColor);
     }
 }
 
@@ -56,6 +58,17 @@ function percentDraw(div){
     }
 }
 
+function randomDraw(div){
+
+    if(drawToggle === true && randomMode === true){
+let rgb1 = Math.floor(Math.random() * 254);
+let rgb2 = Math.floor(Math.random() * 254);
+let rgb3 = Math.floor(Math.random() * 254);
+div.style.backgroundColor = 'rgb(' + rgb1 + ', ' + rgb2 + ', ' + rgb3 + ')';
+    }
+
+}
+
 function makeGrid(size){
     let divWidth = (container.clientWidth)/size;
     let newSize = size * size;
@@ -66,7 +79,7 @@ for(let i = 0; i <= newSize - 1; i++){
     div.style.cssText = "background-color: " + background +";";
     container.appendChild(div);
     div.addEventListener('mousemove', function(){draw(this)});
-    div.addEventListener('mouseenter', function(){percentDraw(this)});
+    div.addEventListener('mouseenter', function(){percentDraw(this); randomDraw(this)});
     }
 }
 
