@@ -19,8 +19,8 @@ function backgroundChange(){
 let drawToggle = false;
 let percentMode = false;
 
-percentButton.addEventListener('click', function(){percentMode = true;});
-percentOffButton.addEventListener('click', function(){percentMode = false;});
+percentButton.addEventListener('click', function(){percentMode = true; percentButton.style.color = 'white'; percentOffButton.style.color = 'black'; percentButton.style.backgroundColor = 'green'; percentOffButton.style.backgroundColor = 'red';});
+percentOffButton.addEventListener('click', function(){percentMode = false; percentOffButton.style.color = 'black'; percentButton.style.color = 'black'; percentButton.style.backgroundColor = 'white'; percentOffButton.style.backgroundColor = 'white';});
 container.addEventListener('click', function(){drawToggle = true;});
 container.addEventListener('dblclick', function(){drawToggle = false;});
 
